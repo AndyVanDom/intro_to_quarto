@@ -1,0 +1,711 @@
+---
+title: Quarto for Scientific Reporting
+subtitle: an introduction and overview
+
+format:
+  revealjs:
+    theme: sky
+    css: intro_q.css
+    logo: figs/logos/um.png
+    incremental: true
+    slide-number: true
+    progress: true
+    touch: true
+    # multiplex: true
+    embed-resources: true
+
+revealjs-plugins:
+  - appearance
+  - pointer
+
+author:
+  - name: Andrew Van Domelen
+    email: vandomea@myumanitoba.ca
+    affiliations: University of Manitoba, Department of Biochemistry and Medical Genetics
+date: "September 24, 2024"
+---
+
+## Land Acknowledgement
+
+::: {.fragment .fade-out fragment-index=1 .button-container style="position:absolute; top: 100px; left: 75px; width: 850px; height: auto;"}
+  [![](figs/pics/fg.png)](https://native-land.ca/){preview-link="true"}
+:::
+
+::: {.fragment .fade-in fragment-index=1 .button-container style="position:absolute; top: 100px; left: 75px; width: 850px; height: auto;"}
+  [![](figs/pics/winnipeg.png)](https://native-land.ca/){preview-link="true"}
+:::
+
+::: {.footer}
+[Land Acknowledgments](https://nativegov.org/news/a-guide-to-indigenous-land-acknowledgment/)
+:::
+
+## Overview
+
+:::: {.columns}
+::: {.column}
+
+:::{.fragment .fade-in-then-semi-out fragment-index=1}
+Scientific Reporting
+:::
+
+:::{.fragment .fade-in-then-semi-out fragment-index=2}
+Quarto and Rstudio
+:::
+
+:::{.fragment .fade-in-then-semi-out fragment-index=3}
+Quarto outputs
+:::
+
+:::{.fragment .fade-in fragment-index=4}
+:::{.fragment .semi-fade-out fragment-index=6}
+Extensions
+:::
+:::
+
+:::{.fragment .fade-in-then-semi-out fragment-index=6}
+Resources
+:::
+
+:::{.fragment .fade-in fragment-index=7}
+Takeaways
+:::
+  
+:::
+::::
+
+:::{.fragment .fade-in-then-out fragment-index=1}
+
+::: {.button-container style="position:absolute; top: 50px; left: 550px; width: 550px; height: auto;"}
+  [![](figs/art/repr_16.png)](https://www.nature.com/articles/533452a){target="_blank"}
+:::
+
+::: {.button-container style="position:absolute; top: 200px; left: 550px; width: 550px; height: auto;"}
+  [![](figs/art/repr_21.png)](https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-021-05875-3){target="_blank"}
+:::
+
+::: {.button-container style="position:absolute; top: 365px; left: 550px; width: 550px; height: auto;"}
+  [![](figs/art/trans_18.png)](https://www.nature.com/articles/s41560-018-0123-2){target="_blank"}
+:::
+
+::: {.button-container style="position:absolute; top: 475px; left: 550px; width: 550px; height: auto;"}
+  [![](figs/art/trans_23.png)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9994678/){target="_blank"}
+:::
+
+:::
+
+:::{.fragment .fade-in-then-out fragment-index=2}
+![](figs/logos/quarto.png){.absolute top=100 left=550 width="550" height="auto"}
+![](figs/logos/rstudio-logo.png){.absolute top=275 left=650 width="325" height="auto"}
+:::
+
+:::{.fragment .fade-in-then-out fragment-index=3}
+::: {style="position:absolute; top: 50px; left: 550px; width: 550px; height: 550px;"}
+```{=html}
+<iframe src="output_examples/html_example.html" width="100%" height="100%" data-external="1""></iframe>
+```
+:::
+:::
+
+:::{.fragment .fade-in-then-semi-out fragment-index=4}
+![](figs/pics/og_mix.png){.absolute top=150 left=600 width="400" height="auto"}
+:::
+
+:::{.fragment .fade-in-then-semi-out fragment-index=5}
+![](figs/pics/ext_1.png){.absolute top=15 left=500 width="250" height="auto"}
+![](figs/pics/ext_2.png){.absolute top=45 left=850 width="250" height="auto"}
+![](figs/pics/ext_3.png){.absolute top=200 left=700 width="250" height="auto"}
+![](figs/pics/ext_4.png){.absolute top=375 left=850 width="250" height="auto"}
+![](figs/pics/ext_5.png){.absolute top=375 left=450 width="250" height="auto"}
+:::
+
+## Key Takeaways
+
+-   **Don't quit the familiar tools!**
+-   **Excelling at Quarto (and scientific communication) is an iterative process.**
+-   **You are not alone**
+-   **Make it easy for your audience**
+
+##
+
+::: {.section-title-text}
+**Scientific Reporting**
+:::
+
+## Scientific Reporting {auto-animate="true"}
+### Reproducibility and Transparency {style="color: gray;"}
+
+
+:::: {.columns}
+::: {.column width=60%}
+:::
+
+
+::: {.column width=40%}
+::: {data-id="list" style="font-size: 23pt;"}
+-   Methodological Documentation
+-   Open Data and Code Sharing
+-   Robust Data Management
+-   Comprehensive Reporting of Results
+:::
+:::
+::::
+
+::: {data-id="bannatyne" .absolute top=200 left=0 width=650 height=auto}
+![](figs/pics/bannatyne.jpg)
+:::
+
+## Scientific Reporting {auto-animate="true"}
+### Our Role as Graduate Students {style="color: gray;"}
+
+:::: {.columns}
+
+::: {.column width=40%}
+::: {data-id="list" style="font-size: 23pt;"}
+
+-   Methodological Documentation
+-   Communication
+    + Advisor, committee
+    + Publications
+    + Conferences
+-   Mentoring other students
+
+
+:::
+:::
+
+::: {.column width=60%}
+:::
+::::
+
+::: {data-id="bannatyne" .absolute top=200 left=450 width=650 height=auto}
+![](figs/pics/bannatyne.jpg)
+:::
+
+##
+
+::: {.section-title-text}
+**RStudio and Quarto**
+:::
+
+## What is Rstudio?
+
+:::: {.columns}
+::: {.column width="60%"}
+-   Developed by [Posit](<https://posit.co/>){preview-link="true"}
+-   User-friendly **Integrated Development Environment (IDE)**
+    + write code, analyze data, and create visuals
+-   R, python, command-line, others
+
+:::
+
+::: {.column width="40%"}
+![](figs/logos/rstudio-logo.png)
+:::
+::::
+
+::: {.fragment .absolute top=50 left=-100 width="1300" height="auto"}
+![](figs/pics/rstudio-screen.png)
+:::
+
+::: {.fragment .absolute top=50 left=-100 width="1300" height="auto"}
+![](figs/pics/r_workspace.png)
+:::
+
+::: {.fragment .absolute top=50 left=-100 width="1300" height="auto"}
+![](figs/pics/r_console.png)
+:::
+
+::: {.fragment .absolute top=50 left=-100 width="1300" height="auto"}
+![](figs/pics/r_env.png)
+:::
+
+::: {.fragment .absolute top=50 left=-100 width="1300" height="auto"}
+![](figs/pics/r_files.png)
+:::
+
+::: {.fragment .absolute top=50 left=-100 width="1300" height="auto"}
+![](figs/pics/r_buttons.png)
+:::
+
+## What is Rstudio? {transition="fade-out" transition-speed="slow"}
+
+::: {.button-container style="position:absolute; top: 75px; left: 0px; width: 1000px; height: auto;" .fragment .semi-fade-out fragment-index=1}
+  [![](figs/pics/r_workshop.jpeg)](https://www.eventbrite.ca/e/data-analysis-with-rstudio-tickets-972624846097?aff=web){target="_blank"}
+:::
+
+::: {.button-container style="position:absolute; top: 150px; left: 15px; width: 500px; height: auto;" .fragment .fade-in fragment-index=1}
+  [![](figs/logos/datacamp.png)](https://www.datacamp.com/courses/free-introduction-to-r){target="_blank"}
+:::
+
+
+::: {.button-container style="border: none; position:absolute; top: 175px; left: 450px; width: 400px; height: auto;" .fragment .fade-in fragment-index=1}
+  [![](figs/logos/edx-logo.svg)](https://www.edx.org/learn/r-programming/harvard-university-data-science-r-basics?index=product&queryID=6a0ba15437d29aa44e29065f40099865&position=1&results_level=first-level-results&term=rstudio&objectID=course-91f52ef3-fa3f-4934-9d19-8d5a32635cd4&campaign=Data+Science%3A+R+Basics&source=edX&product_category=course&placement_url=https%3A%2F%2Fwww.edx.org%2Fsearch){target="_blank"}
+:::
+
+::: {.button-container style="position:absolute; top: 425px; left: 200px; width: 600px; height: auto;" .fragment .fade-in fragment-index=1}
+  [![](figs/logos/RStudio-ed.jpg)](https://education.rstudio.com/){target="_blank"}
+:::
+
+## What is Quarto? {transition="fade-out" transition-speed="slow"}
+
+### Brief Introduction {style="color: gray;"}
+
+::: {.fragment .fade-in-then-semi-out fragment-index=1}
+Developed by [Posit](https://posit.co/){preview-link="true"}
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index=2}
+**Publishing system**
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index=3}
+Wide variety of outputs
+:::
+
+::: {.fragment .fade-in fragment-index=4}
+Transparent 
+
+Reproducible
+:::
+
+::: {.fragment .fade-in fragment-index=1}
+::: {.fragment .fade-out fragment-index=4}
+::: {.hero-animation style="position:absolute; top: 100px; left: 575px; width: 650px; height: 550px;"}
+<video autoplay muted playsinline loop>
+<source src="https://quarto.org/images/hero_animation.mp4" type="video/mp4"/>
+</video>
+:::
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=4}
+::: {style="position:absolute; top: 50px; left: 575px; width: 650px; height: 600px;"}
+```{=html}
+<iframe src="https://quarto-dev.github.io/quarto-gallery/articles/html/html.html" width="100%" height="100%" data-external="1""></iframe>
+```
+:::
+:::
+
+## What is Quarto? {transition="fade-out" transition-speed="slow"}
+
+### Authoring Tools {style="color: gray;"}
+
+::::{.columns}
+:::{.column width="50%"}
+
+::: {.fragment .fade-in fragment-index=1}
+[Rstudio IDE](https://quarto.org/docs/tools/rstudio.html){target="_blank"}
+:::
+
+::: {.fragment .fade-in fragment-index=2}
+[Jupyter Notebooks](https://quarto.org/docs/tools/jupyter-lab.html){target="_blank"}
+:::
+
+::: {.fragment .fade-in fragment-index=3}
+[Visual Studio Code](https://quarto.org/docs/tools/vscode.html){target="_blank"}
+:::
+
+::: {.fragment .fade-in fragment-index=4}
+[Neovim](https://quarto.org/docs/tools/neovim.html){target="_blank"}
+:::
+
+::: {.fragment .fade-in fragment-index=5}
+[Other text editors](https://quarto.org/docs/tools/vscode-notebook.html){target="_blank"}
+:::
+
+:::
+
+::: {.column width="50%"}
+::: {layout-ncol=2}
+::: {.fragment .fade-in fragment-index=1}
+![](figs/logos/rstudio-logo.png){style="width: 200px; margin: auto;"}
+:::
+
+::: {.fragment .fade-in fragment-index=2}
+![](figs/logos/jupyter.png){style="width: 200px; margin: auto;"}
+:::
+
+::: {.fragment .fade-in fragment-index=3}
+![](figs/logos/vs.png){style="width: 200px; margin: auto;"}
+:::
+
+::: {.fragment .fade-in fragment-index=4}
+![](figs/logos/neovim.png){style="width: 200px; margin: auto;"}
+:::
+:::
+:::
+::::
+
+
+## What is Quarto? {transition="fade-out" transition-speed="slow"}
+
+### Our Current System {style="color: gray;"}
+
+:::: {.columns}
+::: {.column}
+
+```{=html}
+<u style="text-align: center;">Without Quarto</u>
+```
+-   Google Docs
+-   Microsoft Office
+-   Data analysis platform
+    + "cut-and-paste"
+  
+:::
+
+::: {.column}
+```{=html}
+<u style="text-align: center;">Using Quarto</u>
+```
+-   First drafts and quick outputs with Google and MS Office
+-   Final product with Quarto
+-   Easy [publishing](https://quarto.org/docs/publishing/){preview-link="true"}
+-   Easy [version control](https://ourcodingclub.github.io/tutorials/git/){target="_blank"}
+:::
+::::
+
+##
+
+::: {.section-title-text}
+**Examples**
+:::
+
+## Revealjs slides
+
+::: {.fragment .fade-in-then-semi-out fragment-index=1 style="font-size: 26pt;"}
+Open source HTML framework
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index=2 style="font-size: 26pt;"}
+Endlessly customizable
+:::
+
+::: {.fragment .fade-in fragment-index=3 style="font-size: 26pt;"}
+Learning curve
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=1}
+![](figs/logos/rjs_logo.svg){.absolute top=200 left=550 width="550" height="auto"}
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=2}
+::: {style="position:absolute; top: 50px; left: 575px; width: 650px; height: 550px;"}
+```{=html}
+<iframe src="https://quarto.org/docs/gallery/#presentations" width="100%" height="100%" data-external="1""></iframe>
+```
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=3}
+![](figs/pics/energy.jpg){.absolute top=75 left=575 width="550" height="auto"}
+
+::: {style="position:absolute; top: 550px; left: 575px; width: auto; font-size: 16pt; text-align: center;"}
+[source](<https://uen.pressbooks.pub/introductorychemistry/chapter/activation-energy-and-temperature-dependence/>){target="_blank"}
+:::
+:::
+
+::: {.footer}
+See more at the [Revealjs site](<https://revealjs.com/>){target="_blank"} 
+
+and on [quarto.org](<https://quarto.org/docs/presentations/revealjs/>){preview-link="true"}
+
+[More RevealJS examples](https://slides.com/explore){target="_blank"}
+:::
+
+## Revealjs slides
+
+::: {.fragment .fade-out fragment-index=1}
+Let's look at an example Revealjs presentation
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index=1}
+::: {style="position:absolute; top: 100px; left: 0px; width: 100%; height: 600px;"}
+```{=html}
+<iframe src="output_examples/revealjs_template.html" width="100%" height="100%" data-external="1""></iframe>
+```
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=2}
+![](figs/pics/inception.jpg){.absolute top=75 left=300 width="350" height="auto"}
+:::
+
+## Other options for slides
+
+::: {.fragment .fade-in-then-semi-out fragment-index=1}
+[Microsoft PowerPoint](<https://quarto.org/docs/presentations/powerpoint.html>){preview-link="true"}
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index=2}
+[Beamer (PDF)](<https://quarto.org/docs/presentations/beamer.html>){preview-link="true"}
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=1}
+![](figs/logos/ppt.jpeg){.absolute top=150 left=550 width="550" height="auto"}
+:::
+
+::: {.fragment .fade-in fragment-index=2}
+::: {style="position:absolute; top: 100px; left: 575px; width: 650px; height: 550px;"}
+```{=html}
+<iframe src="https://quarto-dev.github.io/quarto-gallery/presentations/beamer/beamer.pdf" width="100%" height="100%" data-external="1""></iframe>
+```
+:::
+:::
+
+
+## HTML documents
+
+::: {.fragment .fade-in-then-semi-out fragment-index=1}
+Open source framework
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index=2}
+Endlessly customizable
+:::
+
+::: {.fragment .fade-in fragment-index=3}
+(smaller) learning curve
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=1}
+![](figs/logos/html_logo.png){.absolute top=150 left=700 width="300" height="auto"}
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=2}
+::: {style="position:absolute; top: 50px; left: 575px; width: 650px; height: 550px;"}
+```{=html}
+<iframe src="https://quarto-dev.github.io/quarto-gallery/articles/html/html.html" width="100%" height="100%" data-external="1""></iframe>
+```
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=3}
+![](figs/pics/energy.jpg){.absolute top=150 left=750 width="250" height="auto"}
+
+::: {style="position:absolute; top: 375px; left: 750px; width: auto; font-size: 12pt; text-align: center;"}
+[source](<https://uen.pressbooks.pub/introductorychemistry/chapter/activation-energy-and-temperature-dependence/>){targe="_blank"}
+:::
+:::
+
+
+## HTML documents
+
+::: {.fragment .fade-out fragment-index=1}
+Let's look at an example HTML document
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index=1}
+::: {style="position:absolute; top: 100px; left: 0px; width: 100%; height: 600px;"}
+```{=html}
+<iframe src="output_examples/html_example.html" width="100%" height="100%" data-external="1""></iframe>
+```
+:::
+:::
+
+## Websites
+
+Some great websites made in Quarto:
+
+::: {.nonincremental}
+
+-   [Quarto website](<https://quarto.org/>){preview-link="true" style="text-align: center;"}
+
+-   [Real World Data Science](<https://realworlddatascience.net/>){preview-link="true" style="text-align: center;"}
+
+-   [Andrew Heiss personal website](<https://www.andrewheiss.com/>){preview-link="true" style="text-align: center;"}
+
+-   [STA 210 course website](<https://sta210-s22.github.io/website/>){preview-link="true" style="text-align: center;"}
+:::
+
+::: {.footer}
+[Websites with Quarto](https://quarto.org/docs/websites/)
+:::
+
+## PDF documents
+
+::: {.column width="40%"}
+HTML documents easily convert to PDFs
+
+['Article' PDF]{style="font-size: 24pt;" .fragment .fade-in-then-semi-out fragment-index=1}
+
+['Report' PDF]{style="font-size: 24pt;" .fragment .fade-in-then-semi-out fragment-index=2}
+
+::: {.fragment .fade-in fragment-index=3 .nonincremental}
+Two more great examples here:
+
+-   [High Quality Print](<https://github.com/nmfs-opensci/quarto_titlepages/blob/main/example_1.pdf>){target="_blank"}
+-   [Advanced Layout](<https://quarto-dev.github.io/quarto-gallery/page-layout/tufte.pdf>){target="_blank"}
+:::
+:::
+
+::: {.absolute top=75 left=500 .fragment .fade-in-then-out fragment-index=1}
+```{=html}
+<iframe src="output_examples/pdf_example1.pdf" width="1000px" height="600px" data-external="1""></iframe>
+```
+:::
+
+::: {.absolute top=75 left=500 .fragment .fade-in-then-semi-out fragment-index=2}
+```{=html}
+<iframe src="output_examples/pdf_example2.pdf" width="1000px" height="600px" data-external="1""></iframe>
+```
+:::
+
+::: {.footer}
+[PDFs with Quarto](https://quarto.org/docs/output-formats/pdf-basics.html)
+:::
+
+## Other options for documents
+
+::: {.fragment .fade-in-then-semi-out fragment-index=1}
+[Microsoft Word](<https://quarto.org/docs/output-formats/ms-word.html>){preview-link="true"}
+:::
+
+::: {.fragment .fade-in fragment-index=2}
+[Typst](<https://quarto.org/docs/output-formats/typst.html>){preview-link="true"}
+
+[Still in development!]{style="color: gray; font-size: 22pt;"}
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=1}
+![](figs/logos/word_logo.png){.absolute top=100 left=550 width="350" height="auto"}
+:::
+
+::: {.fragment .fade-in fragment-index=2}
+![](figs/logos/typst_logo.jpeg){.absolute top=100 left=550 width="350" height="auto"}
+:::
+
+
+## Dashboards
+
+::: {.column width="50%"}
+
+Have a lot of data to communicate?
+
+::: {.fragment .fade-in fragment-index=1 style="font-size: 26pt;"}
+
+**Make it:**
+
+Interesting
+
+Attractive
+
+Accessible
+:::
+
+:::
+
+::: {.fragment .fade-out fragment-index=2}
+![](figs/pics/dashboard_ex.png){.absolute top=75 left=550 width="600" height="auto"}
+:::
+
+::: {.fragment .fade-in fragment-index=2}
+::: {style="position:absolute; top: 75px; left: 525px; width: 650px; height: 550px;"}
+```{=html}
+<iframe src="https://quarto.org/docs/gallery/#dashboards" width="100%" height="100%" data-external="1""></iframe>
+```
+:::
+:::
+
+::: {.footer}
+[Dashboards with Quarto](https://quarto.org/docs/dashboards/)
+:::
+
+## Extensions {auto-animate="true"}
+
+![](figs/pics/og_mix.png){data-id="og" .absolute top=140 left=350 width="400"}
+
+![](figs/pics/ext_1.png){data-id="ext1" .absolute top=75 left=1500 width="200"}
+
+![](figs/pics/ext_2.png){data-id="ext2" .absolute top=175 left=1500 width="200"}
+
+![](figs/pics/ext_3.png){data-id="ext3" .absolute top=210 left=1500 width="200"}
+
+![](figs/pics/ext_4.png){data-id="ext4" .absolute top=375 left=1500 width="200"}
+
+![](figs/pics/ext_5.png){data-id="ext5" .absolute top=475 left=1500 width="200"}
+
+
+## Extensions {auto-animate="true"}
+
+
+![](figs/pics/og_mix.png){data-id="og" .absolute top=210 left=100 width="200"}
+
+
+::: {style="text-align: center;" .absolute top=400 left=90 width="200"}
+![](figs/logos/quarto-logo.png)
+:::
+
+::: {.fragment .semi-fade-out fragment-index=1}
+![](figs/pics/ext_1.png){data-id="ext1" .absolute top=50 left=350 width="200"}
+:::
+
+::: {.fragment .semi-fade-out fragment-index=2}
+![](figs/pics/ext_2.png){data-id="ext2" .absolute top=175 left=600 width="200"}
+:::
+
+::: {.fragment .semi-fade-out fragment-index=3}
+![](figs/pics/ext_3.png){data-id="ext3" .absolute top=210 left=850 width="200"}
+:::
+
+::: {.fragment .semi-fade-out fragment-index=4}
+![](figs/pics/ext_4.png){data-id="ext4" .absolute top=375 left=600 width="200"}
+:::
+
+::: {.fragment .semi-fade-out fragment-index=5}
+![](figs/pics/ext_5.png){data-id="ext5" .absolute top=475 left=350 width="200"}
+:::
+
+::: {.fragment .fade-in fragment-index=1 style="background-color: rgba(240, 240, 240, 0.4); text-align: center;" .absolute top=125 left=350 width="200"}
+[Pointer](<https://github.com/quarto-ext/pointer>){target="_blank"}
+:::
+
+::: {.fragment .fade-in fragment-index=2 style="background-color: rgba(240, 240, 240, 0.4); text-align: center;" .absolute top=225 left=600 width="200"}
+[Quiz](<https://parmsam.github.io/quarto-quiz/#/title-slide>){preview-link="true"}
+:::
+
+::: {.fragment .fade-in fragment-index=3 style="background-color: rgba(240, 240, 240, 0.4); text-align: center;" .absolute top=260 left=850 width="200"}
+[Molstar](<https://jmbuhr.de/quarto-molstar/presentation.html#/title-slide>){preview-link="true"}
+:::
+
+::: {.fragment .fade-in fragment-index=4 style="background-color: rgba(240, 240, 240, 0.4); text-align: center;" .absolute top=450 left=600 width="200"}
+[FontAwesome](<https://github.com/quarto-ext/fontawesome?tab=readme-ov-file>){target="_blank"}
+:::
+
+::: {.fragment .fade-in fragment-index=5 style="background-color: rgba(240, 240, 240, 0.4); text-align: center;" .absolute top=550 left=350 width="200"}
+[Journal Formatting](<https://quarto.org/docs/extensions/listing-journals.html>){preview-link="true"}
+:::
+
+::: {.footer}
+[Extensions in Quarto](https://quarto.org/docs/extensions/)
+:::
+
+## Helpful Resources
+
+-   [Quarto website](<https://quarto.org/docs/guide/>){target="_blank"}
+-   [Presentations w/ Quarto](<https://www.youtube.com/watch?v=hbf7Ai3jnxY&t=46s>){target="_blank"} by Tom Mock
+-   [Quarto for Scientists](<https://qmd4sci.njtierney.com/>){target="_blank"} by Nicholas Tierney
+-   [R Workflow](<https://hbiostat.org/rflow/>){target="_blank"} by Frank E. Harrell Jr.
+-   [slidecraft](<https://emilhvitfeldt.github.io/talk-nyr-slidecraft/#/section>){target="_blank"} by Emil Hvitfeldt
+-   and soon ...
+
+::: {.fragment .fade-in}
+  A Quarto tutorial website for UM students and staff
+:::
+
+## Key Takeaways
+
+-   **Don't quit the familiar tools!** Quarto makes beautiful, publication-quality outputs, but we still need Google Docs and Microsoft Office.
+-   **Excelling at Quarto (and scientific communication) is an iterative process.** Learn what works then reuse it! 
+-   Quarto can be frustrating, but **you're not alone**. We're all solving problems.
+-   **Make it easy for your audience**. We communicate for their sake.
+
+##
+
+::: {.section-title-text style="top: 50px; text-align: center;"}
+Thank you!
+:::
+
+::: {style="position: absolute; top: 200px; left: 0; right: 0; margin-inline: auto; width: fit-content;"}
+{{< qrcode https://forms.gle/RywPDZWDVoCtrdUv8 width=300 height=300 >}}
+:::

@@ -1,0 +1,75 @@
+---
+title: PDF example
+subtitle: how exciting!
+author: your name here!
+format:
+  pdf:
+    documentclass: scrartcl
+    papersize: letter
+    number-sections: true
+
+# bibliography: ritchie.bib
+# csl: nature.csl
+---
+
+# Introduction
+
+::: {#wrn-example .callout-warning}
+## Let it be known!
+
+All  from [Wikipedia](<https://en.wikipedia.org/wiki/Louis_Riel>). Go read it there! 
+:::
+
+Louis Riel (22 October 1844 – 16 November 1885) was a Canadian politician, a founder of the province of Manitoba, and a political leader of the Métis people. He led two resistance movements against the Government of Canada and its first prime minister John A. Macdonald. Riel sought to defend Métis rights and identity as the Northwest Territories came progressively under the Canadian sphere of influence.
+
+See @sec-commemoration for more information.
+
+# First Resistance
+
+The first resistance movement led by Riel was the Red River Resistance of 1869–1870. The provisional government established by Riel ultimately negotiated the terms under which the new province of Manitoba entered the Canadian Confederation. However, while carrying out the resistance, Riel had a Canadian nationalist, Thomas Scott, executed. 
+
+## Exile and Election
+
+Riel soon fled to the United States to escape prosecution. He was elected three times as member of the House of Commons, but, fearing for his life, never took his seat. During these years in exile he came to believe that he was a divinely chosen leader and prophet. He married in 1881 while in exile in the Montana Territory.
+
+![Possible photographer: I. Bennetto & Co. (Israel Bennetto, 1860-1946) Engraver: Octave-Henri Julien (1852-1908)](images/LR.jpg){#fig-LR1 fig-align="center" width=60%}
+
+## Return and Conflict
+
+In 1884 Riel was called upon by the Métis leaders in Saskatchewan to help resolve longstanding grievances with the Canadian government. He returned to Canada and led an armed conflict with government forces: the North-West Rebellion of 1885. Defeated at the Battle of Batoche, Riel was imprisoned in Regina where he was convicted at trial of high treason. Despite protests, popular appeals and the jury's call for clemency, Riel was executed by hanging. 
+
+# Legacy
+
+Riel was seen as a heroic victim by French Canadians; his execution had a lasting negative impact on Canada, polarizing the new nation along ethno-religious lines. The Métis were marginalized in the Prairie provinces by the increasingly English-dominated majority. A long-term effect of these actions was the bitter alienation felt by Francophones across Canada, and their anger against the repression by their countrymen.[^1]
+
+[^1]: Bumsted, J. M. (1992). The Peoples of Canada: A Post-Confederation History. Oxford University Press. ISBN 0-19-540914-0.
+
+# Historiography
+
+Historians have debated the Riel case so often and so passionately that he is the most written-about person in Canadian history.[^2] Interpretations have varied dramatically over time. The first amateur English language histories hailed the triumph of civilization, represented by English-speaking Protestants, over savagery represented by the half-breed Métis who were Catholic and spoke French. Riel was portrayed as an insane traitor and an obstacle to the expansion of Canada to the West.[^3][^4]
+
+[^2]: Hamon, Max (2019). The Audacity of His Enterprise: Louis Riel and the Métis Nation That Canada Never Was, 1840–1875. McGill-Queen's University Press. ISBN 978-0773559370.
+
+[^3]: Francis, R. Douglas; Jones, Richard; Smith, Donald B., eds. (2009). [Journeys: A History of Canada.](https://books.google.ca/books?id=GbbZRIOKclsC&pg=PA306&redir_esc=y) Cengage Learning. ISBN 978-0176442446.
+
+[^4]: Sprague, D.N. (1988). Canada and the Métis, 1869–1885. Wilfrid Laurier University Press. ISBN 0-88920-958-8.
+
+Riel's historical reputation has long been polarized between portrayals as a dangerous religious fanatic and rebel opposed to the Canadian nation, and, by contrast, as a charismatic leader intent on defending his Métis people from the unfair encroachments by the federal government eager to give Orangemen-dominated Ontario settlers priority access to land. Riel has received among the most formal organizational and academic scrutiny of any figure in Canadian history.
+
+# Commemorations {#sec-commemoration}
+
+In 2007, Manitoba's provincial government voted to recognize Louis Riel Day as a provincial holiday, observed on the third Monday of February [^5][^6]
+
+[^5]: Reid, Jennifer (2008). Louis Riel and the Creation of Modern Canada: Mythic Discourse and the Postcolonial State. University of Manitoba Press. ISBN 978-0-8263-4415-1. OCLC 1037748071
+[^6]: "[Louis Riel Day holiday](https://www.gov.mb.ca/labour/standards/doc,gen-holidays-after-april-30-07,factsheet.html) (3rd Mon. in Feb.)". Government of Manitoba. Retrieved 6 March 2021.
+
+Two statues of Riel are located in Winnipeg. One of these statues, the work of architect Étienne Gaboury and sculptor Marcien Lemay, depicts Riel as a naked and tortured figure. It was unveiled in 1971 and stood in the grounds of the Manitoba Legislative Building for 23 years. After much outcry (especially from the Métis community) that the statue was an undignified misrepresentation, the statue was removed and placed at the Université de Saint-Boniface. It was replaced with a statue of Louis Riel designed by Miguel Joyal depicting Riel as a dignified statesman. 
+
+![Photo courtesy of Wikipedia, same as everything else here.](images/Riel_statue.jpg){#fig-statue fig-align="center" width=60%}
+
+The unveiling ceremony was on 12 May 1996, in Winnipeg. A statue of Riel on the grounds of the Saskatchewan Legislative Building in Regina was installed and later removed for similar reasons.[108]
+
+
+
+
+

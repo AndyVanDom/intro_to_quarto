@@ -1,0 +1,506 @@
+---
+title: Reveal.js Example
+subtitle: how exciting!
+
+format:
+  revealjs:
+    theme: default
+    # incremental: true
+    slide-number: true
+    scrollable: true
+    progress: true
+    embed-resources: true
+    preview-links: true
+    # chalkboard: true
+    css: ../intro_q.css
+    
+code-annotations: hover
+
+author:
+  - name: Your name
+    email: your email
+    affiliations: your affiliation
+date: last-modified
+---
+
+## This is a slide header
+
+### Below is a list and an image in columns
+
+:::: {.columns}
+::: {.column width="60%"}
+-   Canadian politician
+-   founder of the province of Manitoba
+-   a political leader of the Métis people
+:::
+
+::: {.column width="40%"}
+![](images/LR.jpg)
+:::
+::::
+
+::: {.footer}
+This is a footer! Make sure to check out the `.qmd` file [here](<https://coolmathgames.com>) to see how it all comes together.
+:::
+
+## Incremental Lists and fragments 
+
+Click again and a list will appear one at a time
+
+::: {.incremental}
+*   Louis Riel led two resistance movements against the Government of Canada
+*   He defended Métis rights and identity
+    + [This was especially important as the Northwest Territories came progressively under the Canadian sphere of influence.]{style="font-size: 20pt; color: gray;"}
+:::
+
+::: {.footer}
+Notice in the `qmd` file how I changed the color and size of the last line? 
+
+It looks scary at first, but once you get the CSS text customization will be covered in a future tutorial.
+:::
+
+## Incremental Lists and fragments {background-color="#fcecc0"}
+
+Using "fragments", you can change when items appear on the slide.
+
+:::: {.columns}
+::: {.column width="60%"}
+:::{.fragment .fade-in}
+![](images/prov_gov.jpg)
+:::
+:::
+
+::: {.column width="40%"}
+::: {.fragment}
+The Métis National Committee declared a provisional government on December 8, 1869, with Riel becoming its president on the 27th.
+:::
+:::
+::::
+
+::: {.footer}
+Check the `qmd` file to see how I changed the background color. 
+
+Quarto accepts HEX code colors (#FCECC0) and color names (blue, yellow, etc.)
+:::
+
+## More fragments
+
+::: {.fragment .fade-in}
+Riel fled across the Canada-U.S. border
+:::
+
+::: {.fragment .fade-out}
+Riel defended Manitoba
+:::
+
+::: {.fragment .fade-left}
+::: {.fragment .shrink}
+Riel returned and ran for parliament
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .highlight-blue}
+Riel was not granted amnesty
+:::
+:::
+
+::: {.fragment .fade-in}
+::: {.fragment .strike .semi-fade-out .highlight-red}
+Riel was voted in, but feared assassination or arrest
+:::
+:::
+
+::: {.footer}
+Look at the `qmd` to learn how to make nested fragments.
+
+[Nested Fragment](<https://quarto.org/docs/presentations/revealjs/advanced.html#nested-fragments>)
+:::
+
+## Tabset
+
+::: {.panel-tabset}
+
+## Text
+
+The footer on the previous slide directs you to the `qmd` file to see the code, but ...
+
+## Code
+
+You can also see some of it right here:
+
+``` markdown
+
+## Incremental Lists and fragments {background-color="#fcecc0"}
+
+Using "fragments", you can change when items appear on the slide.
+
+:::: {.columns}
+::: {.column width="60%"}
+:::{.fragment .fade-in}
+![](images/prov_gov.jpg)
+:::
+:::
+
+::: {.column width="40%"}
+::: {.fragment}
+The Métis National Committee declared a provisional government on December 8, 1869, with Riel becoming its president on the 27th.
+:::
+:::
+::::
+```
+
+Notice how this "Code" tab has too much text for the space on this slide? Look for `scrollable: true` in the YAML header in the `qmd` file. Change it, then see what happens!
+
+:::
+
+
+## Code chunks {background-image="images/red_river.jpg" background-opacity=0.15 transition="slide-out"}
+
+-   Incorporate your code, plots, and analyses directly into your Quarto outputs
+
+::: {.fragment}
+::: {.panel-tabset}
+
+## Code
+
+``` r
+head(mtcars, 10)
+```
+
+-   Our data comes from the **mtcars** dataset, accessed directly in RStudio
+
+## Table
+```{r}
+head(mtcars, 10)
+```
+
+:::
+:::
+
+::: {.footer}
+Look at the `qmd` to find the path to this background image. Besides colors and static images, you can also use GIFs/videos and other websites as your slide background. [RevealJS Backgrounds](<https://quarto.org/docs/presentations/revealjs/#slide-backgrounds>)
+:::
+
+## Code chunks {background-image="images/fishery.jpg" background-opacity=0.25 transition="slide-in" transition-speed="slow"}
+
+::: {.panel-tabset}
+
+## Code
+
+Now let's try to plot something:
+
+::: {.column width="85%"}
+``` r
+library(tidyverse)    # <1>
+library(MetBrewer)    # <2>
+
+ggplot(mtcars, aes(hp, mpg, color = as.character(cyl))) +   # <3>
+  geom_point() +    # <4>
+  theme_minimal() +   # <5>
+  scale_color_manual(values = met.brewer('Egypt')) +    # <6>
+  labs(   # <7>
+    x = "Horsepower",   # <7>
+    y = "Miles / Gallon",   # <7>
+    color = "Cylinder count"    # <7>
+  )   # <7>
+```
+
+
+1. Load the [Tidyverse](<https://www.tidyverse.org/>) package
+2. Load the [MetBrewer](<https://www.blakerobertmills.com/my-work/met-brewer>) package
+3. Use the `ggplot` function to plot three variables from the mtcars dataset
+4. Use `geom_point()` function to create a scatter plot
+5. Apply a minimal theme to the scatter plot
+6. Apply the MetBrewer palette Egypt to the data
+7. Add labels to the axes and legend
+
+:::
+
+## Plot 1
+
+```{r}
+#| cache: true
+#| fig-height: 4.5
+
+library(tidyverse)
+library(MetBrewer)
+
+ggplot(mtcars, aes(hp, mpg, color = as.character(cyl))) +
+  geom_point(size=3) +
+  theme_minimal() +
+  scale_color_manual(values = met.brewer('Egypt')) +
+  labs(
+    x = "Horsepower",
+    y = "Miles / Gallon",
+    color = "Cylinder count"
+  )
+```
+
+## Plot 2
+
+```{r}
+#| cache: true
+#| fig-height: 4.5
+
+library(tidyverse)
+library(MetBrewer)
+
+plot2 <- ggplot(mtcars, aes(hp, mpg, color = as.character(cyl))) +
+  geom_point(size=5) +
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "black") +
+  theme_minimal() +
+  scale_color_manual(values = met.brewer('VanGogh2')) +
+  labs(
+    title = "Relationship Between Horsepower and MPG by Cylinder Count",
+    x = "Horsepower",
+    y = "Miles per Gallon (MPG)",
+    color = "Cylinder count"
+  ) +
+  theme(
+    legend.position = c(0.8, 0.8),
+    axis.title = element_text(size = 16),
+    legend.title = element_text(size = 14),
+    legend.box.background = element_rect(fill = '#fae9ca', color = 'gray'))
+
+plot2
+```
+
+:::
+
+::: {.footer}
+Did you like that transition? Search for `transition="slide"` in the `.qmd` file. 
+
+[Slide Transitions](<https://quarto.org/docs/presentations/revealjs/advanced.html#slide-transitions>)
+:::
+
+## Code animations {background-image="images/valley.jpg" background-opacity=0.25 auto-animate="true"}
+
+[Original Code:]{style="font-size: 22pt;"} 
+``` r
+#| cache: true
+
+library(tidyverse)
+library(MetBrewer)
+
+ggplot(mtcars, aes(hp, mpg, color = as.character(cyl))) +
+  geom_point(size=3) +
+  theme_minimal() +
+  scale_color_manual(values = met.brewer('Egypt')) +
+  labs(
+    x = "Horsepower",
+    y = "Miles / Gallon",
+    color = "Cylinder count"
+  )
+```
+
+## Code animations {background-image="images/valley.jpg" background-opacity=0.25 auto-animate="true"}
+
+[New Code:]{style="font-size: 22pt;"} 
+
+``` r
+#| cache: true
+
+library(tidyverse)
+library(MetBrewer)
+
+plot2 <- ggplot(mtcars, aes(hp, mpg, color = as.character(cyl))) +
+  geom_point(size=5) +
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "black") +
+  theme_minimal() +
+  scale_color_manual(values = met.brewer('VanGogh2')) +
+  labs(
+    title = "Relationship Between Horsepower and MPG by Cylinder Count",
+    x = "Horsepower",
+    y = "Miles per Gallon (MPG)",
+    color = "Cylinder count"
+  ) +
+  theme(
+    legend.position = c(0.8, 0.8),
+    axis.title = element_text(size = 16),
+    legend.title = element_text(size = 14),
+    legend.box.background = element_rect(fill = '#fae9ca', color = 'gray'))
+
+plot2
+```
+
+## Code highlighting {background-image="images/valley.jpg" background-opacity=0.25 auto-animate="true"}
+
+[New Code:]{style="font-size: 22pt;"} 
+
+``` {.r code-line-numbers="7-8|10|11-16|18|19-20|21"}
+#| cache: true
+
+library(tidyverse)
+library(MetBrewer)
+
+plot2 <- ggplot(mtcars, aes(hp, mpg, color = as.character(cyl))) +
+  geom_point(size=5) +
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "black") +
+  theme_minimal() +
+  scale_color_manual(values = met.brewer('VanGogh2')) +
+  labs(
+    title = "Relationship Between Horsepower and MPG by Cylinder Count",
+    x = "Horsepower",
+    y = "Miles per Gallon (MPG)",
+    color = "Cylinder count"
+  ) +
+  theme(
+    legend.position = c(0.8, 0.8),
+    axis.title = element_text(size = 16),
+    legend.title = element_text(size = 14),
+    legend.box.background = element_rect(fill = '#fae9ca', color = 'gray'))
+
+plot2
+```
+
+## Absolute Positioning {transition="zoom"}
+
+::: {.fragment fragment-index=1 .absolute top=150 left=600 width="400" height="auto"}
+::: {.fragment .semi-fade-out fragment-index=5}
+```{r} 
+plot2
+```
+:::
+:::
+
+::: {.fragment fragment-index=2 .absolute top=300 left=200 width="800" height="auto"}
+::: {.fragment .semi-fade-out fragment-index=5}
+```{r} 
+plot2
+```
+:::
+:::
+
+::: {.fragment fragment-index=3 .absolute top=100 left=50 width="700" height="auto"}
+::: {.fragment .semi-fade-out fragment-index=5} 
+```{r} 
+plot2
+```
+:::
+:::
+
+::: {.fragment fragment-index=4 .absolute top=200 left=500 width="850" height="auto"}
+::: {.fragment .semi-fade-out fragment-index=5}
+```{r} 
+plot2
+```
+:::
+:::
+
+::: {.fragment fragment-index=5}
+
+``` markdown
+::: {.fragment fragment-index=1 .absolute top=150 left=600 width="400" height="auto"}
+::: {.fragment .semi-fade-out fragment-index=5}   
+your plot in an R chunk 
+:::
+:::
+```
+
+::: {style="background-color: rgba(240, 240, 240, 0.7);"}
+-   Create a “fenced div” that contains your fragment settings and your absolute position settings.
+-   Create another fenced div for this plot’s second fragment setting (semi-fade-out on click 5)
+-   Insert your plot (or image or text or tabset or anything!)
+:::
+
+:::
+
+::: {.fragment fragment-index=6 style="font-size: 16pt; text-align: center; background-color: rgba(249, 197, 103, 0.3);"}
+Divs and spans are HTML-speak. Quarto looks best when the user plays around with these. A future tutorial will cover divs and spans in Quarto
+
+[Divs and Spans](<https://quarto.org/docs/authoring/markdown-basics.html#sec-divs-and-spans>)
+:::
+
+## Interactivity (plotly)
+
+::: {.fragment}
+Let's look at our plot in a new way:
+:::
+
+::: {.fragment}
+```{r}
+library(tidyverse)
+library(plotly)
+
+plotly::ggplotly(plot2, width = 900, height = 450)
+
+```
+:::
+
+::: {.footer}
+The [plotly](<https://plotly.com/r/getting-started/>) package is an easy tool to make any plot interactive and interesting! 
+
+However, avoid creating interactive tables and plots when the underlying data is sensitive due to either confidentiality or data-sharing agreements. 
+
+**Data can be extracted from interactive plots, and not static plots**.
+:::
+
+## Interactivity (Shiny)
+
+[[Shiny](<https://quarto.org/docs/interactive/shiny/>) offers endless customization options for interactive plots, tables, and dashboards:]{style="font-size: 20pt;"}
+
+::: {.fragment}
+```{=html}
+<iframe src="https://jjallaire.shinyapps.io/diamonds-explorer/" width="1200px" height="500px" data-external="1" object-position="center" ></iframe>
+```
+:::
+
+## Interactivity (Leaflet)
+
+[[Leaflet](<https://quarto.org/docs/interactive/widgets/htmlwidgets.html>) for when you need a simple map:]{style="font-size: 20pt;"}
+
+::: {.column width="90%"}
+```{r}
+library(leaflet)
+
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=-97.13617, lat=49.81944, popup="Riel House National Historic Site")
+```
+:::
+
+
+## Interactivity (Time-series Data)
+
+[Dygraphs](<https://rstudio.github.io/dygraphs/>) for visualizing time-series plots
+
+```{r}
+library(dygraphs)
+dygraph(nhtemp, main = "New Haven Temperatures") %>% 
+  dyRangeSelector(dateWindow = c("1920-01-01", "1960-01-01"))
+```
+
+
+::: {.footer}
+Dygraphs code borrowed from the [htmlwidgets page](<https://www.htmlwidgets.org/showcase_dygraphs.html>)
+:::
+
+## Preview Links
+
+Sometimes, we want to direct our audience to a link or other web source:
+
+:::: {.columns}
+::: {.column}
+![](images/LR_2.jpg){width="250" height="auto" padding="1em"}
+:::
+
+::: {.column}
+-   [Wikipedia](<https://en.wikipedia.org/wiki/Louis_Riel>){preview-link="true" style="text-align: center;"}
+
+-   [Métis Nation of Ontario](<https://www.metisnation.org/wp-content/uploads/2010/05/who-was-louis-riel.pdf>){preview-link="true" style="text-align: center;"}
+
+-   [Government of Manitoba](<https://www.gov.mb.ca/chc/louis_riel/bio.html>){preview-link="true" style="text-align: center;"}
+
+:::
+::::
+
+##
+
+::: {.section-title-text}
+**And a whole lot more!**
+:::
+
+::: {.footer}
+[Revealjs in Quarto](<https://quarto.org/docs/presentations/revealjs/index.html>){style="font-size: 32pt;"}
+:::

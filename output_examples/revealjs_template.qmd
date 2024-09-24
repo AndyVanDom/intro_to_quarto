@@ -423,7 +423,8 @@ Let's look at our plot in a new way:
 library(tidyverse)
 library(plotly)
 
-plotly::ggplotly(plot2, width = 900, height = 450)
+plotly::ggplotly(plot2, width = 900, height = 450) %>%
+  layout(legend = list(x = 0.8, y = 0.9))
 
 ```
 :::
